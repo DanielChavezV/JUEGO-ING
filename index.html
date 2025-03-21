@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎮 Encuentra el Error 🎮</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap">
+    <style>
+        body {
+            background: url('https://img.pikbest.com/wp/202345/computer-technology-abstract-background-with-green-lights-and-shaped-lines_9590611.jpg!w700wp') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.85);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 25px #00ffff;
+            text-align: center;
+            animation: glow 1.5s infinite alternate;
+            width: 60%;
+        }
+        @keyframes glow {
+            from { box-shadow: 0 0 25px #00ffff; }
+            to { box-shadow: 0 0 35px #00ffcc; }
+        }
+        .code-box {
+            background: #111;
+            color: #00ff00;
+            font-family: monospace;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: left;
+            display: inline-block;
+            border: 3px solid #00ffcc;
+            box-shadow: 0 0 15px #00ffcc;
+        }
+        .option {
+            display: block;
+            margin: 15px auto;
+            padding: 15px 30px;
+            background: linear-gradient(90deg, #00ffff, #00ffcc);
+            border: none;
+            cursor: pointer;
+            color: #000;
+            font-size: 18px;
+            border-radius: 10px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-weight: bold;
+            width: 80%;
+        }
+        .option:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #00ffcc;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-size: 22px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+            font-weight: bold;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🎮 Encuentra el Error 🎮</h2>
+        <p>Observa el código y elige la opción correcta:</p>
+        <div class="code-box">
+            <pre>
+function suma(a, b) {
+    return a - b;
+}
+console.log(suma(5, 3)); // ¿Qué imprimirá?
+            </pre>
+        </div>
+        <div class="options">
+            <button class="option" onclick="revisarRespuesta('No hay error')">❌ No hay error</button>
+            <button class="option" onclick="revisarRespuesta('Error en el operador')">✅ Error en el operador</button>
+            <button class="option" onclick="revisarRespuesta('Falta un return')">❌ Falta un return</button>
+        </div>
+        <div id="resultado"></div>
+    </div>
+    <script>
+        function revisarRespuesta(opcion) {
+            let resultado = document.getElementById("resultado");
+            resultado.style.display = "block";
+            if (opcion === "Error en el operador") {
+                resultado.style.background = "#00ff00";
+                resultado.style.color = "#000";
+                resultado.innerHTML = "✅ ¡Correcto! El operador debe ser '+' en lugar de '-'.";
+            } else {
+                resultado.style.background = "#ff4c4c";
+                resultado.style.color = "#fff";
+                resultado.innerHTML = "❌ Incorrecto. ¡Inténtalo de nuevo!";
+            }
+        }
+    </script>
+</body>
+</html>
